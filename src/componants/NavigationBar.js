@@ -19,16 +19,11 @@ const NavigationBar = (props) => {
     return(
         <Navbar className="bg-body-tertiary justify-content-between" sticky="top">
             <Container>
-          <Navbar.Brand href="#">Countires of the world</Navbar.Brand>
+          {/* <Navbar.Brand href="#">Countires of the world</Navbar.Brand> */}
+          <h2>Countries of the world</h2>
         <Form inline>
           <Row>
             <Col xs="auto">
-                {/* <input 
-                    value={searchTerm} 
-                    className='mr-sm-2' 
-                    placeholder='Search' 
-                    onChange={handleChange}>
-                </input> */}
                 <Form.Control
                     type="text"
                     placeholder="Search"
@@ -38,7 +33,7 @@ const NavigationBar = (props) => {
                 />
             </Col>
             <Col xs="auto">
-            <Button type="submit">Submit</Button>
+            <Button variant="info" type="submit">Submit</Button>
             </Col>
           </Row>
         </Form>

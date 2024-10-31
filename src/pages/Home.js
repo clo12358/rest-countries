@@ -1,58 +1,52 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const Home = (props) => {
-
     const [countriesList, setCountriesList] = useState([]);
-    const {searchTerm} = props;
+    const [filteredCountries, setFilteredCountries] = useState([]);
+    const { searchTerm } = props;
 
-    // useEffect(() => {
-    //     axios.get(`https://restcountries.com/v3.1/all`)
-    //     .then(response => {
-    //         setCountriesList(response.data);
-    //     })
-    //     .catch(error => {
-    //         console.error(error);
-    //     });
-    // }, );
-
+    // Fetch all countries only once when the component mounts
     useEffect(() => {
-        if(!searchTerm){
         axios
             .get("https://restcountries.com/v3.1/all")
             .then((response) => {
-                console.log(response.data);
                 setCountriesList(response.data);
+                setFilteredCountries(response.data); // Initialize filtered list
             })
             .catch((error) => {
                 console.log(error);
             });
+    }, []);
+
+    // Filter countries whenever searchTerm changes
+    useEffect(() => {
+        if (searchTerm) {
+            setFilteredCountries(
+                countriesList.filter((country) =>
+                    country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+            );
+        } else {
+            setFilteredCountries(countriesList); // Reset to all countries if searchTerm is empty
         }
+    }, [searchTerm, countriesList]);
 
-        setCountriesList(countriesList.filter((country) => {
-            return country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
-        }))
-
-    }, [searchTerm]);
-
-    
-
-    let countryCards = countriesList.map((country, index) => {
+    let countryCards = filteredCountries.map((country, index) => {
         return (
             <Col key={index} md={4} className="mb-4">
                 <Card style={{ width: '18rem' }}>
                     <Card.Img variant="top" style={{ height: '10rem' }} src={country.flags.png} alt={`${country.name.common}`} />
                     <Card.Body>
                         <Card.Title>{country.name.common}</Card.Title>
-                        {/* <Card.Text>
-                            Some quick example text to build on the card title and make up the
-                            bulk of the card's content.
-                        </Card.Text> */}
-                        <Button variant="primary" size="sm">View More</Button>{' '}
+                        <Link to={`/country/${country.name.common}`}>
+                            <Button variant="info" size="sm">View More</Button>
+                        </Link>
                     </Card.Body>
                 </Card>
             </Col>
