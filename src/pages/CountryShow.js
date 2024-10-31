@@ -41,14 +41,14 @@ const CountryShow = () => {
                 centered
             >
                 <Modal.Header>
-                    <Modal.Title id="contained-modal-title-vcenter">
+                    <Modal.Title id="contained-modal-title-vcenter" className='bold'>
                         Coats of Arms
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Image alt={`${country.name.common} flag`} src={country.coatOfArms.png} style={{ height: '20rem', width: '20rem' }} />
+                    <Image alt={`${country.name.common} coat of arms`} src={country.coatOfArms.png} style={{ height: '20rem', width: '20rem' }} />
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer className='text'>
                     <Button variant="info" onClick={props.onHide}>Close</Button>
                 </Modal.Footer>
             </Modal>
@@ -56,56 +56,59 @@ const CountryShow = () => {
     }
 
     return (
-        <Container>
+        <Container className='font-colour'>
             <Row>
                 <Col>
                     <Image alt={`${country.name.common} flag`} src={country.flags.svg} style={{ height: '20rem', width: '30rem' }} rounded fluid />
                 </Col>
                 <Col className='flex'>
-                    <h1>{country.name.common}</h1>
+                    <h1 className='bold'>{country.name.common}</h1>
                     {/* Official Name */}
                     <div className="d-flex align-items-center">
-                        <span className="fs-6 fw-bold me-2">Official Name:</span>
-                        <span className="fs-6">{country.name.official}</span>
+                        <span className="fs-6 bold me-2">Official Name:</span>
+                        <span className="fs-6 text">{country.name.official}</span>
                     </div>
                     {/* Capital */}
                     <div className="d-flex align-items-center">
-                        <span className="fs-6 fw-bold me-2">Capital:</span>
-                        <span className="fs-6">{country.capital}</span>
+                        <span className="fs-6 bold me-2">Capital:</span>
+                        <span className="fs-6 text">{country.capital}</span>
                     </div>
                     {/* Time Zone */}
                     <div className="d-flex align-items-center">
-                        <span className="fs-6 fw-bold me-2">Time Zone:</span>
-                        <span className="fs-6">{country.timezones}</span>
+                        <span className="fs-6 bold me-2">Time Zone:</span>
+                        <span className="fs-6 text">{country.timezones}</span>
                     </div>
                     {/* Population */}
                     <div className="d-flex align-items-center">
-                        <span className="fs-6 fw-bold me-2">Population:</span>
-                        <span className="fs-6">{country.population} people</span>
+                        <span className="fs-6 bold me-2">Population:</span>
+                        <span className="fs-6 text">{country.population} people</span>
                     </div>
                     {/* Currency */}
                     <div className="d-flex align-items-center">
-                        <span className="fs-6 fw-bold me-2">Currency:</span>
-                        <span className="fs-6">{currenciesToCommaSeparatedString(country.currencies)}</span>
+                        <span className="fs-6 bold me-2">Currency:</span>
+                        <span className="fs-6 text">{currenciesToCommaSeparatedString(country.currencies)}</span>
                     </div>
                     {/* Region */}
                     <div className="d-flex align-items-center">
-                        <span className="fs-6 fw-bold me-2">Region:</span>
-                        <span className="fs-6">{country.region}</span>
+                        <span className="fs-6 bold me-2">Region:</span>
+                        <span className="fs-6 text">{country.region}</span>
                     </div>
-                    <div className='mt-4'>
-                        <Button variant="info" onClick={() => setModalShow(true)}>
-                            View Coats of Arms
-                        </Button>
-                        <MyVerticallyCenteredModal
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                        />
-                    </div>
+                    {/* Coats of Arms Button */}
+                    {country.coatOfArms?.png && (
+                        <div className='mt-4 text'>
+                            <Button variant="info" onClick={() => setModalShow(true)}>
+                                View Coats of Arms
+                            </Button>
+                            <MyVerticallyCenteredModal
+                                show={modalShow}
+                                onHide={() => setModalShow(false)}
+                            />
+                        </div>
+                    )}
                 </Col>
             </Row>
             <Row className="mt-4">
-                <h4>Google Map Location:</h4>
+                <h4 className='bold'>Google Map Location:</h4>
                 <iframe
                     title={`${country.name.common} Map`}
                     src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAw_UERlsU6i7zkUoNXn-SLTjzvNggOJ8Y&q=${encodeURIComponent(country.name.common)}`}

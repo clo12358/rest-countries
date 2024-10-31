@@ -43,8 +43,8 @@ const Home = (props) => {
                 <Card style={{ width: '18rem' }}>
                     <Card.Img variant="top" style={{ height: '10rem' }} src={country.flags.png} alt={`${country.name.common}`} />
                     <Card.Body>
-                        <Card.Title>{country.name.common}</Card.Title>
-                        <Link to={`/country/${country.name.common}`}>
+                        <Card.Title className='font-colour bold'>{country.name.common}</Card.Title>
+                        <Link to={`/country/${country.name.common}`} className='text'>
                             <Button variant="info" size="sm">View More</Button>
                         </Link>
                     </Card.Body>

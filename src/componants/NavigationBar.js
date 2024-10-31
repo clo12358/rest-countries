@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 // import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import "../App.css";
 
 
 const NavigationBar = (props) => {
@@ -20,19 +21,19 @@ const NavigationBar = (props) => {
         <Navbar className="bg-body-tertiary justify-content-between" sticky="top">
             <Container>
           {/* <Navbar.Brand href="#">Countires of the world</Navbar.Brand> */}
-          <h2>Countries of the world</h2>
+          <h2 className='bold font-colour'>Countries of the world</h2>
         <Form inline>
           <Row>
             <Col xs="auto">
                 <Form.Control
                     type="text"
                     placeholder="Search"
-                    className=" mr-sm-2"
+                    className=" mr-sm-2 text"
                     value={searchTerm} 
                     onChange={handleChange}
                 />
             </Col>
-            <Col xs="auto">
+            <Col xs="auto text">
             <Button variant="info" type="submit">Submit</Button>
             </Col>
           </Row>

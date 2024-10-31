@@ -1,0 +1,23 @@
+/* Regular Font */
+@font-face {
+    font-family: text;
+    src:url(./fonts/BonaNovaSC-Regular.ttf);
+}
+
+.text {
+    font-family: text;
+}
+
+/* Bold Font */
+@font-face {
+    font-family: bold;
+    src:url(./fonts/BonaNovaSC-Bold.ttf);
+}
+
+.bold {
+    font-family: bold;
+}
+
+.font-colour {
+    color: #0b0b1c;
+}
