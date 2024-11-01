@@ -13,6 +13,7 @@ const CountryShow = () => {
     const [country, setCountry] = useState(null);
     const [modalShow, setModalShow] = useState(false);
 
+    // Currency
     const currenciesToCommaSeparatedString = (currs) => {
         if (!currs) {
             return "None";
@@ -40,16 +41,16 @@ const CountryShow = () => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Header>
-                    <Modal.Title id="contained-modal-title-vcenter" className='bold'>
+                <Modal.Header className='bg-cream'>
+                    <Modal.Title id="contained-modal-title-vcenter" className='bold font-colour'>
                         Coats of Arms
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} className='bg-cream'>
                     <Image alt={`${country.name.common} coat of arms`} src={country.coatOfArms.png} style={{ height: '20rem', width: '20rem' }} />
                 </Modal.Body>
-                <Modal.Footer className='text'>
-                    <Button variant="info" onClick={props.onHide}>Close</Button>
+                <Modal.Footer className='bg-cream text'>
+                    <Button className='button-style' onClick={props.onHide}>Close</Button>
                 </Modal.Footer>
             </Modal>
         );
@@ -62,7 +63,10 @@ const CountryShow = () => {
                     <Image alt={`${country.name.common} flag`} src={country.flags.svg} style={{ height: '20rem', width: '30rem' }} rounded fluid />
                 </Col>
                 <Col className='flex'>
+                    <div>
                     <h1 className='bold'>{country.name.common}</h1>
+                    <span>{country.unMember}</span>
+                    </div>
                     {/* Official Name */}
                     <div className="d-flex align-items-center">
                         <span className="fs-6 bold me-2">Official Name:</span>
@@ -96,7 +100,7 @@ const CountryShow = () => {
                     {/* Coats of Arms Button */}
                     {country.coatOfArms?.png && (
                         <div className='mt-4 text'>
-                            <Button variant="info" onClick={() => setModalShow(true)}>
+                            <Button className='button-style' onClick={() => setModalShow(true)}>
                                 View Coats of Arms
                             </Button>
                             <MyVerticallyCenteredModal

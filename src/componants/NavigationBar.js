@@ -18,23 +18,23 @@ const NavigationBar = (props) => {
     }
 
     return(
-        <Navbar className="bg-body-tertiary justify-content-between" sticky="top">
+        <Navbar className="cream justify-content-between shadow" sticky="top">
             <Container>
           {/* <Navbar.Brand href="#">Countires of the world</Navbar.Brand> */}
-          <h2 className='bold font-colour'>Countries of the world</h2>
+          <h2 className='bold font-colour-white'>Countries of the world</h2>
         <Form inline>
           <Row>
             <Col xs="auto">
                 <Form.Control
                     type="text"
                     placeholder="Search"
-                    className=" mr-sm-2 text"
+                    className=" mr-sm-2 text bg-cream bold"
                     value={searchTerm} 
                     onChange={handleChange}
                 />
             </Col>
-            <Col xs="auto text">
-            <Button variant="info" type="submit">Submit</Button>
+            <Col xs="auto text bold">
+            <Button className='button-style' type="submit">Submit</Button>
             </Col>
           </Row>
         </Form>

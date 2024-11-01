@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {  BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
 import "./App.css";
 
@@ -15,13 +15,13 @@ const App = () => {
 
     const [searchTerm, setSearchTerm] = useState('')
 
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const totalPages = 8; // replace with actual total pages
-
-    // const handlePageChange = (page) => {
-    //     setCurrentPage(page);
-    //     console.log("Current page set to:", page); // Add this to verify it's updating
-    // };
+    // Changing background colour
+    useEffect(() => {
+        document.body.style.backgroundColor = "#f7f1e4";
+        return () => {
+            document.body.style.backgroundColor = "";
+        };
+    }, []);
 
     return (
         <Router>

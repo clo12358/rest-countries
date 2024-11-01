@@ -19,5 +19,34 @@
 }
 
 .font-colour {
-    color: #0b0b1c;
+    color: #0b0b1c !important;
+}
+
+.font-colour-white {
+    color: azure;
+}
+
+.button-style {
+    background-color: #7fa175 !important;
+    transition-duration: 0.4s !important;
+    border: 2px solid #7fa175 !important;
+    box-shadow: none !important;
+}
+
+.button-style:hover {
+    background-color: azure !important;
+    border: 2px solid #7fa175 !important;
+    color: #0b0b1c !important;
+}
+
+.cream {
+    background-color: #D9C8A5;
+}
+
+.bg-cream {
+    background-color: #f7f1e4 !important;
+}
+
+.shadow {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19) !important;
 }

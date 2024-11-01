@@ -45,7 +45,7 @@ const Home = (props) => {
                     <Card.Body>
                         <Card.Title className='font-colour bold'>{country.name.common}</Card.Title>
                         <Link to={`/country/${country.name.common}`} className='text'>
-                            <Button variant="info" size="sm">View More</Button>
+                            <Button className='button-style' size="sm">View More</Button>
                         </Link>
                     </Card.Body>
                 </Card>
